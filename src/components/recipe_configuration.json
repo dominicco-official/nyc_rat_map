@@ -1,0 +1,47 @@
+{ "recipe": {
+    "version": 1,
+    "layers": {
+      "building_rats": {
+        "source": "mapbox://tileset-source/dominicco1995/building_rat_source",
+        "minzoom": 13,
+        "maxzoom": 15
+      },
+      "trees": {
+        "source": "mapbox://tileset-source/dominicco1995/tree_source",
+        "minzoom": 13,
+        "maxzoom": 15,
+        "tiles" : {
+          "limit" : [
+              [
+                  "lowest_where_in_distance",
+                  true,
+                  64,
+                  "tree_dbh"
+              ]
+          ]
+      }
+      },
+      "heatmap_rats": {
+        "source": "mapbox://tileset-source/dominicco1995/heatmap_street_rodents_source",
+        "minzoom": 13,
+        "maxzoom": 15,
+        "tiles" : {
+          "limit" : [
+              [
+                  "lowest_where_in_distance",
+                  true,
+                  64,
+                  "score"
+              ]
+          ]
+      }
+    },
+    "catch_basins": {
+        "source": "mapbox://tileset-source/dominicco1995/catch_basins_source",
+        "minzoom": 16,
+        "maxzoom": 16
+      }
+    }
+    },
+    "name": "rat_map_nyc"
+}
