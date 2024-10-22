@@ -25,10 +25,10 @@ const App = () => {
     { id: 'trees-layer', name: 'Trees' },
     { id: 'catchBasin-layer', name: 'Catch Basins' },
   ];
-
+  
   // Initialize the map only once test
   useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZG9taW5pY2NvMTk5NSIsImEiOiJjbTIyeXBsaGcwMDkwMmxwdGRrajBhMTRqIn0.L1Oqzed5DemEaKdrSyc70w'; // Replace with your actual token
+    mapboxgl.accessToken = import.meta.env.VITE_API_KEY; // Replace with your actual token
     mapRef.current = new mapboxgl.Map({
       container: mapContainerRef.current,
       center: [-74.0242, 40.6941],
