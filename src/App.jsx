@@ -26,7 +26,7 @@ const App = () => {
     { id: 'catchBasin-layer', name: 'Catch Basins' },
   ];
 
-  // Initialize the map only once
+  // Initialize the map only once test
   useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZG9taW5pY2NvMTk5NSIsImEiOiJjbTIyeXBsaGcwMDkwMmxwdGRrajBhMTRqIn0.L1Oqzed5DemEaKdrSyc70w'; // Replace with your actual token
     mapRef.current = new mapboxgl.Map({
