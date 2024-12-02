@@ -1,68 +1,173 @@
 import React from 'react';
-import { FormControlLabel, Checkbox, Box, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+  FormControlLabel,
+  Checkbox,
+  Paper,
+  FormGroup,
+  Typography,
+  Divider,
+} from '@mui/material';
 
 // Define a list of land use options
 const landUseOptions = [
   { value: '01', label: '1-2 Family Bldg' },
-  { value: '02', label: 'Multi-Family Walk-Up Bldg' },
-  { value: '03', label: 'Multi-Family Elevator Bldg' },
-  { value: '04', label: 'Mixed Residential/Commercial' },
+  { value: '02', label: 'Multi-Family Walk-Up' },
+  { value: '03', label: 'Multi-Family + Elevator' },
+  { value: '04', label: 'Residential/Commercial' },
   { value: '05', label: 'Commercial/Office Bldg' },
   { value: '06', label: 'Industrial/Manufacturing' },
   { value: '07', label: 'Transportation/Utility' },
-  { value: '08', label: 'Public Facilities/Institutions' },
-  { value: '09', label: 'Open Space/Outdoor Recreation' },
+  { value: '08', label: 'Public Institutions' },
+  { value: '09', label: 'Outdoor Recreation' },
   { value: '10', label: 'Parking Facilities' },
   { value: '11', label: 'Vacant Land' },
-  { value: '00', label: 'Unknown' }
-  // Add more land use options as needed
+  // { value: '00', label: 'Unknown' },
 ];
 
-const LandUseFilter = ({ selectedLandUses, onChange }) => {
-  const handleChange = (event) => {
+// Define a list of borough options based on boro_name
+const boroughOptions = [
+  { value: 'Manhattan', label: 'Manhattan' },
+  { value: 'Bronx', label: 'Bronx' },
+  { value: 'Brooklyn', label: 'Brooklyn' },
+  { value: 'Queens', label: 'Queens' },
+  { value: 'Staten Island', label: 'Staten Island' },
+];
+
+const LandUseFilter = ({
+  selectedLandUses,
+  onLandUseChange,
+  selectedBoroughs,
+  onBoroughChange,
+}) => {
+  // Handler for land use checkbox changes
+  const handleLandUseChange = (event) => {
     const { value } = event.target;
-    console.log(`Checkbox changed: ${value}`); // Debugging statement
-    // Update the parent component with the new land use selections
-    onChange(value);
+    onLandUseChange(value);
+  };
+
+  // Handler for borough checkbox changes
+  const handleBoroughChange = (event) => {
+    const { value } = event.target;
+    onBoroughChange(value);
   };
 
   return (
-    <Box
+    <Paper
       sx={{
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        display: 'grid', // Use grid display
-        gridTemplateColumns: '100%', // Ensure full width
-        zIndex: 100000
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
+        padding: 2,
+        zIndex: 1000,
+        marginTop: '5px',
+        
       }}
     >
-      <Accordion sx={{ width: '100%' }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="land-use-filter-content"
-          id="land-use-filter-header"
-        >
-          <Typography sx={{ fontSize: '2.2rem', fontWeight: "bold"}}>Building Type Filter</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          {landUseOptions.map((option) => (
-            <FormControlLabel
-              key={option.value}
-              control={
-                <Checkbox
-                  checked={selectedLandUses.includes(option.value)}
-                  onChange={handleChange}
-                  value={option.value}
-                />
-              }
-              label={<Typography sx={{ fontSize: '2.2rem' }}>{option.label}</Typography>} 
-              sx={{ marginBottom: 1 }}
-            />
-          ))}
-        </AccordionDetails>
-      </Accordion>
-      
-    </Box>
+      {/* Land Use Filter Section */}
+      <Typography
+        sx={{
+          fontSize: '.85rem',
+          fontWeight: 'bold',
+          marginBottom: '7px',
+          paddingLeft: '5px',
+          color: '#FFFFFF', // Title text color set to white
+        }}
+      >
+        Building Type Filter
+      </Typography>
+      <FormGroup>
+        {landUseOptions.map((option) => (
+          <FormControlLabel
+            key={option.value}
+            control={
+              <Checkbox
+                checked={selectedLandUses.includes(option.value)}
+                onChange={handleLandUseChange}
+                value={option.value}
+                size="small"
+                sx={{
+                  color: '#FFFFFF', // Checkbox color for unchecked state
+                  '&.Mui-checked': {
+                    color: '#FFFFFF', // Checkbox color for checked state
+                  },
+                  padding: '4px',
+                  paddingLeft: '12px',
+                }}
+              />
+            }
+            label={
+              <Typography
+                sx={{
+                  fontSize: '0.85rem',
+                  lineHeight: 1,
+                  margin: 0,
+                  color: '#FFFFFF', // Label text color set to white
+                }}
+              >
+                {option.label}
+              </Typography>
+            }
+            sx={{
+              marginBottom: 0,
+              marginTop: 0,
+            }}
+          />
+        ))}
+      </FormGroup>
+
+      {/* Divider between Land Use and Borough Filters */}
+      <Divider sx={{ marginY: 1, backgroundColor: '#FFFFFF33' }} />
+
+      {/* Borough Filter Section */}
+      <Typography
+        sx={{
+          fontSize: '.85rem',
+          fontWeight: 'bold',
+          marginBottom: '7px',
+          paddingLeft: '5px',
+          color: '#FFFFFF', // Title text color set to white
+        }}
+      >
+        Borough Filter
+      </Typography>
+      <FormGroup row>
+        {boroughOptions.map((option) => (
+          <FormControlLabel
+            key={option.value}
+            control={
+              <Checkbox
+                checked={selectedBoroughs.includes(option.value)}
+                onChange={handleBoroughChange}
+                value={option.value}
+                size="small"
+                sx={{
+                  color: '#FFFFFF', // Checkbox color for unchecked state
+                  '&.Mui-checked': {
+                    color: '#FFFFFF', // Checkbox color for checked state
+                  },
+                  padding: '4px',
+                  paddingLeft: '12px',
+                }}
+              />
+            }
+            label={
+              <Typography
+                sx={{
+                  fontSize: '0.85rem',
+                  lineHeight: 1,
+                  margin: 0,
+                  color: '#FFFFFF', // Label text color set to white
+                }}
+              >
+                {option.label}
+              </Typography>
+            }
+            sx={{
+              marginBottom: 0,
+              marginTop: 0,
+            }}
+          />
+        ))}
+      </FormGroup>
+    </Paper>
   );
 };
 

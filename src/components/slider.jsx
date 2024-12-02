@@ -1,19 +1,16 @@
 import React from 'react';
 import Slider from '@mui/material/Slider';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 const YearSlider = ({ selectedYear, onYearChange }) => {
-  // Handle slider value change and pass it to the parent component
   const handleChange = (event, newValue) => {
-    onYearChange(newValue); // Call the provided callback with the new value
+    onYearChange(newValue);
   };
 
-  // Create marks for the slider with custom styling
   const marks = Array.from({ length: 15 }, (_, i) => ({
     value: 2010 + i,
     label: (
-      <span style={{ fontSize: '2.7rem', color: '#000000' }}>
+      <span style={{ fontSize: '14px', fontWeight: '600', color: '#ffffff' }}>
         {2010 + i}
       </span>
     ),
@@ -24,11 +21,11 @@ const YearSlider = ({ selectedYear, onYearChange }) => {
       sx={{
         width: '85%',
         position: 'fixed',
-        bottom: 250,
+        bottom: 50, // Adjusted for better positioning
         left: '50%',
         transform: 'translateX(-50%)',
         padding: '10px',
-        backgroundColor: 'rgba(255, 255, 255, 0.0)',
+        backgroundColor: 'transparent',
         zIndex: 1000,
       }}
     >
@@ -42,25 +39,18 @@ const YearSlider = ({ selectedYear, onYearChange }) => {
         valueLabelDisplay="auto"
         sx={{
           '& .MuiSlider-track': {
-            height: 50,
-            backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            width: "calc(100% + 140px)",
-            zIndex: 1,
-            marginLeft: '-50px',
+            height: 8,
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
           },
           '& .MuiSlider-rail': {
-            height: 50,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            marginBottom: '2rem',
-            width: "calc(100% + 100px)",
-            marginLeft: '-50px',
+            height: 8,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
           },
           '& .MuiSlider-thumb': {
-            height: 110,
-            width: 110,
-            zIndex: 2,
+            height: 24,
+            width: 24,
             backgroundColor: '#fff',
-            border: '10px solid #ffffff',
+            border: '2px solid #ffffff',
             '&:hover, &.Mui-focusVisible': {
               boxShadow: 'inherit',
             },
@@ -69,14 +59,22 @@ const YearSlider = ({ selectedYear, onYearChange }) => {
             backgroundColor: 'rgba(0, 0, 0, 0.9)',
           },
           '& .MuiSlider-markLabel': {
-            marginTop: '8rem',
-            padding: '10px 0',
+            marginTop: '10px',
+            padding: '2px 0',
           },
           '& .MuiSlider-mark': {
             backgroundColor: 'rgba(0, 0, 0, 0.2)',
-            height: 80,
-            width: 8,
-            marginTop: '64px',
+            height: 12,
+            width: 2,
+            marginTop: '10px',
+          },
+          
+          '& .MuiSlider-valueLabel': {
+            backgroundColor: 'black', // Black background for popup
+            color: 'white', // White text color
+            fontWeight: 'bold', // Optional: Make the text bold
+            borderRadius: '3px', // Rounded corners for popup
+            padding: '4px 8px', // Adjust padding for better spacing
           },
           '&:focus': {
             outline: 'none',

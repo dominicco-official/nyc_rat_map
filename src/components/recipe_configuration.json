@@ -1,47 +1,46 @@
-{ "recipe": {
-    "version": 1,
-    "layers": {
-      "building_rats": {
-        "source": "mapbox://tileset-source/dominicco1995/building_rat_source",
-        "minzoom": 13,
-        "maxzoom": 15
-      },
-      "trees": {
-        "source": "mapbox://tileset-source/dominicco1995/tree_source",
-        "minzoom": 13,
-        "maxzoom": 15,
-        "tiles" : {
-          "limit" : [
-              [
-                  "lowest_where_in_distance",
-                  true,
-                  64,
-                  "tree_dbh"
-              ]
-          ]
+
+{"recipe": {
+
+  "version": 1,
+  "layers": {
+    "building_rats": {
+      "source": "mapbox://tileset-source/hlco1997/building_rat_source",
+      "minzoom": 12,
+      "maxzoom": 16
+    },
+    "trees": {
+      "source": "mapbox://tileset-source/hlco1997/tree_source",
+      "minzoom": 12,
+      "maxzoom": 16,
+      "features": {
+        "attributes": {
+          "set": { "count": 1 }
+        }
       }
-      },
-      "heatmap_rats": {
-        "source": "mapbox://tileset-source/dominicco1995/heatmap_street_rodents_source",
-        "minzoom": 13,
-        "maxzoom": 15,
-        "tiles" : {
-          "limit" : [
-              [
-                  "lowest_where_in_distance",
-                  true,
-                  64,
-                  "score"
-              ]
-          ]
+    },
+    "heatmap_rats": {
+      "source": "mapbox://tileset-source/hlco1997/heatmap_street_rodents_source",
+      "minzoom": 12,
+      "maxzoom": 16,
+      "features": {
+        "attributes": {
+          "set": { "count": 1 }
+        }
       }
     },
     "catch_basins": {
-        "source": "mapbox://tileset-source/dominicco1995/catch_basins_source",
-        "minzoom": 16,
-        "maxzoom": 16
+      "source": "mapbox://tileset-source/hlco1997/catch_basins_source",
+      "minzoom": 12,
+      "maxzoom": 16,
+      "features": {
+        "attributes": {
+          "set": { "count": 1 }
+        }
       }
     }
-    },
-    "name": "rat_map_nyc"
+  },
+  "fillzoom": 16
+
+},
+"name": "rat_map_nyc"
 }
