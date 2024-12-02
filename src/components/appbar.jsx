@@ -9,7 +9,7 @@ const TopBar = () => {
         {/* Title with Icon */}
         <Box display="flex" alignItems="center">
             <img 
-            src="src\assets\Frame 2.png" 
+            src="/Frame 2.png" 
             alt="Icon" 
             style={{ height: '24px', marginRight: '8px' }} 
           />
@@ -26,7 +26,7 @@ const TopBar = () => {
         </Box>
 
         {/* Portfolio Link */}
-        <Link 
+        {/* <Link 
           href="https://dominicco.com" 
           color="inherit"
           underline="hover"
@@ -46,7 +46,7 @@ const TopBar = () => {
               marginLeft: '5px', // Add space between text and arrow
             }} 
           />
-        </Link>
+        </Link> */}
       </Toolbar>
     </AppBar>
   );

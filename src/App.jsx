@@ -545,7 +545,7 @@ const App = () => {
     // Delay the removal of the loading screen
     setTimeout(() => {
       setLoading(false); // Hide loading screen after a delay
-    }, 1500); // Delay in milliseconds (e.g., 1.5 seconds)
+    }, 2000); // Delay in milliseconds (e.g., 1.5 seconds)
       
 
       // Refine to hide only minor street names
